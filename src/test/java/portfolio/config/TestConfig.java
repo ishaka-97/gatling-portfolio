@@ -24,6 +24,9 @@ public final class TestConfig {
       Long.parseLong(System.getProperty("durationSec", "120"));
 
   /** SLA : 95e percentile max (ms) et taux d'erreur max (%). */
-  public static final int P95_MAX_MS = Integer.parseInt(System.getProperty("p95MaxMs", "1500"));
+  // En smoke, on vérifie surtout que les scénarios fonctionnent : seuil large,
+  // car quelques requêtes "à froid" sur une API de démo partagée faussent le p95.
+  public static final int P95_MAX_MS =
+      Integer.parseInt(System.getProperty("p95MaxMs", "smoke".equals(PROFILE) ? "5000" : "1500"));
   public static final double ERROR_RATE_MAX = Double.parseDouble(System.getProperty("errorRateMax", "1"));
 }

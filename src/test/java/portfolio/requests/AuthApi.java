@@ -24,5 +24,8 @@ public final class AuthApi {
                   .check(
                       status().is(200),
                       jmesPath("accessToken").exists(),
-                      jmesPath("accessToken").saveAs("accessToken")));
+                      jmesPath("accessToken").saveAs("accessToken")))
+          // Si la connexion échoue, l'utilisateur virtuel s'arrête ici :
+          // inutile d'appeler des routes protégées sans jeton
+          .exitHereIfFailed();
 }
