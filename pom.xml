@@ -38,7 +38,7 @@
         <artifactId>gatling-maven-plugin</artifactId>
         <version>${gatling-maven-plugin.version}</version>
         <configuration>
-          <simulationClass>portfolio.simulations.ComputerDatabaseSimulation</simulationClass>
+          <simulationClass>portfolio.simulations.EcommerceApiSimulation</simulationClass>
         </configuration>
       </plugin>
     </plugins>

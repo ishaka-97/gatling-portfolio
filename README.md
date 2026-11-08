@@ -3,15 +3,16 @@
 ![Tests de performance Gatling](https://github.com/ishaka-97/gatling-portfolio/actions/workflows/gatling.yml/badge.svg)
 
 Tests de performance réalisés avec **Gatling 3 (Java DSL)** et **Maven**, exécutés sur **GitHub Actions**.
-Application ciblée : [Computer Database](https://computer-database.gatling.io), application de démonstration mise à disposition par Gatling.
+Application ciblée : `https://api-ecomm.gatling.io`, API e-commerce de démonstration mise à disposition par Gatling.
 
 📊 **[Voir le dernier rapport Gatling](https://ishaka-97.github.io/gatling-portfolio/)**
 
 ## Ce que montre ce projet
 
-- **Scénarios modulaires** : chaque parcours métier est une brique réutilisable (`requests/`)
-- **Mix de trafic réaliste** : 80 % de visiteurs, 20 % d'éditeurs qui créent des données
-- **Données dynamiques** : recherches alimentées par un feeder CSV, valeurs extraites des réponses (`saveAs`) et réutilisées
+- **Scénarios modulaires** : chaque appel d'API est une brique réutilisable (`requests/`)
+- **Mix de trafic réaliste** : 70 % de visiteurs anonymes, 30 % de clients qui se connectent
+- **Corrélation** : le jeton d'authentification est extrait de la réponse (`jmesPath`) puis réinjecté dans l'en-tête `Authorization`
+- **Données de test** : comptes alimentés par un feeder JSON
 - **Trois profils de charge** sélectionnables sans modifier le code :
   - `smoke` : vérification rapide des scénarios (quelques utilisateurs)
   - `load` : montée progressive puis palier au débit cible
@@ -25,9 +26,9 @@ Application ciblée : [Computer Database](https://computer-database.gatling.io),
 .github/workflows/gatling.yml        Pipeline CI
 src/test/java/portfolio/
   config/TestConfig.java             Paramètres (URL, profil, débit, SLA)
-  requests/                          Briques de parcours (Search, Browse, Create)
+  requests/                          Briques d'appels API (SessionApi, AuthApi)
   simulations/                       Simulation et profils d'injection
-src/test/resources/data/search.csv   Jeu de données
+src/test/resources/data/users.json   Comptes de test
 ```
 
 ## Lancer en local

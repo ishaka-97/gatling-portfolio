@@ -10,7 +10,7 @@ public final class TestConfig {
 
   /** Application ciblée. Par défaut : site de démo fourni par Gatling. */
   public static final String BASE_URL =
-      System.getProperty("baseUrl", "https://computer-database.gatling.io");
+      System.getProperty("baseUrl", "https://api-ecomm.gatling.io");
 
   /** Profil de charge : smoke, load ou stress. */
   public static final String PROFILE = System.getProperty("profile", "smoke");
