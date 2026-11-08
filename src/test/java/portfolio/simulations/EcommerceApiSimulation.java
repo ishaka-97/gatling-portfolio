@@ -33,6 +33,8 @@ public class EcommerceApiSimulation extends Simulation {
           .exec(SessionApi.OPEN_SESSION)
           .pause(1, 2)
           .exec(AuthApi.LOGIN)
+          // Sans jeton, inutile de continuer : on arrête l'utilisateur virtuel
+          .exitHereIfFailed()
           .pause(1, 2)
           .exec(SessionApi.AUTHENTICATED_SESSION);
 
